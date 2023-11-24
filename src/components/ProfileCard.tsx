@@ -39,7 +39,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   photo,
 }) => {
   return (
-    <div css={cardStyle}>
+    <div id="profile-card" css={cardStyle}>
       <div css={photoContainerStyle}>
         {photo && <img src={photo} alt="Profile" css={photoStyle} />}
       </div>

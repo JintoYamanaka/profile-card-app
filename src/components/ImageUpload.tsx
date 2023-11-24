@@ -12,13 +12,7 @@ const containerStyle = css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 10px;
-`;
-
-const previewStyle = css`
-  margin-top: 10px;
-  max-width: 100%;
-  height: auto;
+  margin-bottom: 20px;
 `;
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ label, onImageChange }) => {

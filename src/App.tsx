@@ -4,6 +4,8 @@ import { css } from "@emotion/react";
 import InputField from "./components/InputField";
 import ImageUpload from "./components/ImageUpload";
 import ProfileCard from "./components/ProfileCard";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 interface UserProfile {
   name: string;
@@ -37,6 +39,19 @@ const cardContainerStyle = css`
   overflow: hidden;
 `;
 
+const downloadButtonStyle = css`
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+`;
+
 const App = () => {
   const [userProfile, setUserProfile] = useState<UserProfile>({
     name: "",
@@ -54,6 +69,22 @@ const App = () => {
       setUserProfile({ ...userProfile, photo: URL.createObjectURL(file) });
     } else {
       setUserProfile({ ...userProfile, photo: "" });
+    }
+  };
+
+  const handleDownload = async () => {
+    const card = document.getElementById("profile-card");
+    if (card) {
+      const canvas = await html2canvas(card);
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF();
+
+      // 画像の幅と高さを指定
+      const imgWidth = 210; // 例: PDFの幅に合わせる
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+      pdf.save("profile-card.pdf");
     }
   };
 
@@ -85,6 +116,9 @@ const App = () => {
           label="プロフィール写真"
           onImageChange={handleImageChange}
         />
+        <button css={downloadButtonStyle} onClick={handleDownload}>
+          ダウンロード
+        </button>
       </div>
       <div css={cardContainerStyle}>
         <ProfileCard
@@ -93,7 +127,6 @@ const App = () => {
           phoneNumber={userProfile.phoneNumber}
           photo={userProfile.photo}
         />
-        {/* ここにダウンロード機能を実装 */}
       </div>
     </div>
   );
