@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
+import { css } from "@emotion/react";
 import InputField from "./components/InputField";
 import ImageUpload from "./components/ImageUpload";
+import ProfileCard from "./components/ProfileCard";
 
 interface UserProfile {
   name: string;
@@ -9,6 +11,31 @@ interface UserProfile {
   phoneNumber: string;
   photo: string;
 }
+
+const appContainerStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+`;
+
+const formContainerStyle = css`
+  width: 35%;
+  margin-right: 20px;
+`;
+
+const cardContainerStyle = css`
+  width: 45%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+`;
 
 const App = () => {
   const [userProfile, setUserProfile] = useState<UserProfile>({
@@ -31,33 +58,43 @@ const App = () => {
   };
 
   return (
-    <div>
-      <InputField
-        label="名前"
-        type="text"
-        name="name"
-        value={userProfile.name}
-        onChange={handleInputChange}
-      />
-      <InputField
-        label="誕生日"
-        type="date"
-        name="birthday"
-        value={userProfile.birthday}
-        onChange={handleInputChange}
-      />
-      <InputField
-        label="電話番号"
-        type="text"
-        name="phoneNumber"
-        value={userProfile.phoneNumber}
-        onChange={handleInputChange}
-      />
-      <ImageUpload label="プロフィール写真" onImageChange={handleImageChange} />
-      {/* ここにダウンロード機能を実装 */}
-      {userProfile.photo && (
-        <img src={userProfile.photo} alt="Profile Preview" />
-      )}
+    <div css={appContainerStyle}>
+      <div css={formContainerStyle}>
+        <InputField
+          label="名前"
+          type="text"
+          name="name"
+          value={userProfile.name}
+          onChange={handleInputChange}
+        />
+        <InputField
+          label="誕生日"
+          type="date"
+          name="birthday"
+          value={userProfile.birthday}
+          onChange={handleInputChange}
+        />
+        <InputField
+          label="電話番号"
+          type="text"
+          name="phoneNumber"
+          value={userProfile.phoneNumber}
+          onChange={handleInputChange}
+        />
+        <ImageUpload
+          label="プロフィール写真"
+          onImageChange={handleImageChange}
+        />
+      </div>
+      <div css={cardContainerStyle}>
+        <ProfileCard
+          name={userProfile.name}
+          birthday={userProfile.birthday}
+          phoneNumber={userProfile.phoneNumber}
+          photo={userProfile.photo}
+        />
+        {/* ここにダウンロード機能を実装 */}
+      </div>
     </div>
   );
 };
