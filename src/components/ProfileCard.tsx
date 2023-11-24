@@ -27,6 +27,11 @@ const photoStyle = css`
   object-fit: cover;
 `;
 
+const textStyle = css`
+  text-align: center;
+  margin: 10px 0;
+`;
+
 const ProfileCard: React.FC<ProfileCardProps> = ({
   name,
   birthday,
@@ -38,9 +43,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       <div css={photoContainerStyle}>
         {photo && <img src={photo} alt="Profile" css={photoStyle} />}
       </div>
-      <h3>{name}</h3>
-      <p>{birthday}</p>
-      <p>{phoneNumber}</p>
+      <h3 css={textStyle}>{name}</h3>
+      <p css={textStyle}>{birthday}</p>
+      <p css={textStyle}>{phoneNumber}</p>
     </div>
   );
 };
