@@ -12,8 +12,17 @@ interface InputFieldProps {
 }
 
 const inputStyle = css`
-  margin: 10px 0;
-  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+  }
 `;
 
 const InputField: React.FC<InputFieldProps> = ({

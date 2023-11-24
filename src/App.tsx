@@ -30,7 +30,7 @@ const formContainerStyle = css`
 
 const cardContainerStyle = css`
   width: 45%;
-  height: 500px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +50,7 @@ const downloadButtonStyle = css`
   cursor: pointer;
   border: none;
   border-radius: 4px;
+  width: 100%;
 `;
 
 const App = () => {

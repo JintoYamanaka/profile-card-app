@@ -11,7 +11,7 @@ interface ProfileCardProps {
 
 const cardStyle = css`
   padding: 20px;
-  max-width: 300px;
+  width: 100%;
 `;
 
 const photoContainerStyle = css`
