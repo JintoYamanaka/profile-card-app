@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 import { css } from "@emotion/react";
 
 interface ProfileCardProps {
@@ -32,7 +31,7 @@ const textStyle = css`
   margin: 10px 0;
 `;
 
-const ProfileCard  = ({
+const ProfileCard = ({
   name,
   birthday,
   phoneNumber,
