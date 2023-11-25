@@ -80,8 +80,7 @@ const App = () => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
 
-      // 画像の幅と高さを指定
-      const imgWidth = 210; // 例: PDFの幅に合わせる
+      const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
       pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);

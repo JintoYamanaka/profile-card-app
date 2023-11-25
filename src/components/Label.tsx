@@ -12,7 +12,7 @@ const labelStyle = css`
   font-weight: bold;
 `;
 
-const Label: React.FC<LabelProps> = ({ htmlFor, children }) => {
+const Label = ({ htmlFor, children }: LabelProps) => {
   return (
     <label css={labelStyle} htmlFor={htmlFor}>
       {children}

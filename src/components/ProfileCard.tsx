@@ -32,12 +32,12 @@ const textStyle = css`
   margin: 10px 0;
 `;
 
-const ProfileCard: React.FC<ProfileCardProps> = ({
+const ProfileCard  = ({
   name,
   birthday,
   phoneNumber,
   photo,
-}) => {
+}: ProfileCardProps) => {
   return (
     <div id="profile-card" css={cardStyle}>
       <div css={photoContainerStyle}>

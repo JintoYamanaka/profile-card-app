@@ -25,13 +25,13 @@ const inputStyle = css`
   }
 `;
 
-const InputField: React.FC<InputFieldProps> = ({
+const InputField = ({
   label,
   type,
   name,
   value,
   onChange,
-}) => {
+}: InputFieldProps) => {
   return (
     <div>
       <Label htmlFor={name}>{label}</Label>

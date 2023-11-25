@@ -15,7 +15,7 @@ const containerStyle = css`
   margin-bottom: 20px;
 `;
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ label, onImageChange }) => {
+const ImageUpload = ({ label, onImageChange }: ImageUploadProps) => {
   const [previewUrl, setPreviewUrl] = useState<string>("");
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
